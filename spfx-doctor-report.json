@@ -1,0 +1,39 @@
+[
+  {
+    "check": "SharePoint Framework",
+    "passed": true,
+    "version": "1.16.1",
+    "message": "SharePoint Framework v1.16.1 valid."
+  },
+  {
+    "check": "SharePoint Framework",
+    "passed": true,
+    "version": "1.16.1",
+    "message": "SharePoint Framework v1.16.1"
+  },
+  {
+    "check": "Node",
+    "passed": false,
+    "version": "20.12.2",
+    "message": "Node v20.12.2 found, v>=16.13.0 <17.0.0 required",
+    "fix": "Install Node.js >=16.13.0 <17.0.0"
+  },
+  {
+    "check": "yo",
+    "passed": false,
+    "message": "yo not found",
+    "fix": "npm i -g yo@4"
+  },
+  {
+    "check": "gulp-cli",
+    "passed": false,
+    "message": "gulp-cli not found",
+    "fix": "npm i -g gulp-cli@2"
+  },
+  {
+    "check": "typescript",
+    "passed": false,
+    "message": "typescript v4.5.5 installed in the project",
+    "fix": "npm un typescript"
+  }
+]
