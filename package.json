@@ -21,6 +21,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.10.1",
+    "sentiment": "^5.0.2",
     "tslib": "2.3.1"
   },
   "devDependencies": {
@@ -30,6 +31,7 @@
     "@microsoft/sp-build-web": "1.16.1",
     "@microsoft/sp-module-interfaces": "1.16.1",
     "@rushstack/eslint-config": "2.5.1",
+    "@types/sentiment": "^5.0.4",
     "@types/webpack-env": "~1.15.2",
     "ajv": "^6.12.5",
     "eslint": "8.7.0",

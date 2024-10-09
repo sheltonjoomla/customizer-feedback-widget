@@ -64,6 +64,19 @@ Make sure to update the /config/serve.json with your tenant 'pageUrl'
 | ------- | ---------------- | --------------- |
 | 1.0     | July 02, 2023   | Initial release  |
 | 2.0     | September 25, 2024   | Adding Site URL and Sentiment  |
+| 3.0     | October 15, 2023   | Updated feedback text constants  |
+
+## Recent Updates
+
+### Version 3.0 (October 9, 2024)
+
+In this update, we've made changes to the feedback text constants in the file `/src/extensions/feedback/constants.ts`. These changes include:
+
+- Updated the text for various feedback-related messages and prompts
+- Improved clarity and user-friendliness of the feedback interface
+- Ensured consistency in the language used throughout the feedback process
+
+To see the specific changes, please refer to the `constants.ts` file in the feedback extension directory.
 
 
 ## Minimal Path to Awesome⚡
@@ -71,9 +84,16 @@ Make sure to update the /config/serve.json with your tenant 'pageUrl'
 - Clone this repository
 - Ensure that you are at the solution folder
 - in the command-line run:
+  - `nvm use 16.18.1`
   - `npm install`
-  - `gulp serve`
-  - `gulp trust-dev-cert` to 
+  - `gulp serve` make sure you are logged in to the testing Tenant
+
+Run a new build if you don't see your updates 
+  `npm run build`
+  then `gulp server`
+
+### Other Commands 
+  - `gulp trust-dev-cert` 
 
 
 ## Debug URL for Testing
@@ -83,7 +103,7 @@ Make sure to update the /config/serve.json with your tenant 'pageUrl'
 ```
 
 ## Deploy Package Solution 🚀
-
+- Update Tenant `pageUrl` in `/config/serve.json`
 - Ensure that you are at the solution folder
 - in the command-line run:
   - `npm install`

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { Text } from "@fluentui/react/lib";
-
+import { FEEDBACK_TEXT } from "../constants";
 
 import styles from "./FeedbackCustomizer.module.scss";
 import { Sp } from "../../../Environment/Env";
@@ -11,12 +11,11 @@ import { SuccessPage } from "./SuccessPage";
 // import { Site } from "@pnp/sp/sites";
 import Sentiment from 'sentiment';
 
-
 export default function FeedbackCustomizer() {
   const [open, setOpen] = useState(false);
   const [currentUserMail, setCurrentUserMail] = useState("");
   const [userName, setuserName] = useState("");
-  const [feedbackComment, setfeedbackComment] = useState("");
+  const [feedbackComment, setFeedbackComment] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [successFlag, setSuccessFlag] = useState(false);
   const [currentSiteUrl, setSiteUrl] = useState("");
@@ -27,14 +26,14 @@ export default function FeedbackCustomizer() {
 
   const handleBtnClose = () => {
     setOpen(false);
-    setfeedbackComment("");
+    setFeedbackComment(""); // Corrected the function name
     setSuccessFlag(false);
     handleOpen(); // Call handleOpen to show the popup again
   };
 
   const handleClose = () => {
     setOpen(false);
-    setfeedbackComment("");
+    setFeedbackComment("");
   };
 
   useEffect(() => {
@@ -53,14 +52,14 @@ export default function FeedbackCustomizer() {
   }, []);
 
   const handleTextArea = (event) => {
-    setfeedbackComment(event.target.value);
+    setFeedbackComment(event.target.value);
   };
 
   // Remove Unnecessary Query Parameters from URL 
   const cleanUrl = (url) => {
     const parsedUrl = new URL(url);
     return parsedUrl.origin + parsedUrl.pathname;
-};
+  };
   
   const handleFeedbackSubmit = async () => {
     const sentiment = new Sentiment();
@@ -69,9 +68,9 @@ export default function FeedbackCustomizer() {
     const encodedUrl = encodeURI(cleanUrl(currentSiteUrl));
     
     if (feedbackComment.trim() === "") {
-      setErrorMessage("Comment can't be empty");
+      setErrorMessage(FEEDBACK_TEXT.emptyCommentError);
     } else if (feedbackComment.length < 30) {
-      setErrorMessage("Comment should be at least 50 characters long");
+      setErrorMessage(FEEDBACK_TEXT.shortCommentError);
     } else {
       await Sp.lists
         .getByTitle("Feedbacks")
@@ -92,7 +91,7 @@ export default function FeedbackCustomizer() {
         .catch((err) => console.log('Error posting to SharePoint:', err));
   
       setErrorMessage("");
-      setfeedbackComment("");
+      setFeedbackComment("");
       setSuccessFlag(true);
     }
   };
@@ -114,7 +113,7 @@ export default function FeedbackCustomizer() {
             <BiMessageSquareDetail
               style={{ width: "23px", height: "23px", paddingBottom: "4px" }}
             />
-            <Text className={styles["text-style"]}>Feedback!!</Text>
+            <Text className={styles["text-style"]}>{FEEDBACK_TEXT.feedbackButton}</Text>
           </div>
           {open && (
             <div className={styles["popup-container"]}>
@@ -128,7 +127,7 @@ export default function FeedbackCustomizer() {
                     fontFamily: "Calibre",
                   }}
                 >
-                  Submit your feedback here!!!
+                  {FEEDBACK_TEXT.submitFeedback}
                 </Text>
                 <RiCloseCircleLine
                   style={{
@@ -146,14 +145,14 @@ export default function FeedbackCustomizer() {
                     className={styles["textArea__style"]}
                     value={feedbackComment}
                     onChange={handleTextArea}
-                    placeholder="Type here..."
+                    placeholder={FEEDBACK_TEXT.feedbackPlaceholder}
                   ></textarea>
                   <p className={styles["errorTxt"]}>{errorMessage}</p>
                   <button
                     className={styles["submitbtn"]}
                     onClick={handleFeedbackSubmit}
                   >
-                    Submit
+                    {FEEDBACK_TEXT.submitFeedbackButton}
                   </button>
                 </div>
               ) : (

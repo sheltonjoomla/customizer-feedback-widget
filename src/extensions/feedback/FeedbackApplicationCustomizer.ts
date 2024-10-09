@@ -68,6 +68,6 @@ export default class FeedbackApplicationCustomizer
       if (this._rootElement) {
         ReactDOM.unmountComponentAtNode(this._rootElement);
       }
-    }
+    } 
   }
   

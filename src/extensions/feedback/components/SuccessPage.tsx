@@ -2,6 +2,7 @@ import * as React from "react";
 import styles from "./FeedbackCustomizer.module.scss";
 import Lottie from "lottie-react";
 import Success from "../../assets/success-animation.json";
+import { FEEDBACK_TEXT } from "../constants";
 
 export interface ISuccessProps {
   goBack:()=>void;
@@ -16,14 +17,14 @@ export const SuccessPage: React.FC<ISuccessProps> = (props:ISuccessProps): JSX.E
   return (
     <div className={styles["successWrapper"]}>
       <p style={{ marginBottom: "0", fontSize: "15px", fontWeight: "500" }}>
-        Thanks for submitting your feedback!
+        {FEEDBACK_TEXT.successMessage}
       </p>
       <Lottie animationData={Success} style={{ width: "40%" }} loop={false} />
       <p style={{ marginBottom: "0", marginTop: "0" }}>
-        We'll respond back to you shortly.
+        {FEEDBACK_TEXT.responseMessage}
       </p>
       <p style={{ marginBottom: "0", color: "#312783" }}>
-        Want to submit another response?
+        {FEEDBACK_TEXT.anotherResponsePrompt}
       </p>
       <p
         style={{
@@ -35,7 +36,7 @@ export const SuccessPage: React.FC<ISuccessProps> = (props:ISuccessProps): JSX.E
         }}
         onClick={handleGoBack}
       >
-        Click here
+        {FEEDBACK_TEXT.clickHere}
       </p>
     </div>
   )
